@@ -80,7 +80,7 @@ run_in_go_container() {
     `# golang caching: mount and use the cache volume` \
       -v "${CACHE_VOLUME}:/go" -e XDG_CACHE_HOME=/go/cache \
     `# mount the output & source dir, set working directory to the source dir` \
-      -v "${OUT_DIR}:/out" -v "${SOURCE_DIR}:/src" -w "/src" \
+      -v "${OUT_DIR}:/out" -v ${SOURCE_DIR}:/src -w "/src" \
     `# pass through go settings: modules, proxy, cgo, OS / Arch` \
       -e GO111MODULE -e GOPROXY -e CGO_ENABLED -e GOOS -e GOARCH \
     `# pass through proxy settings` \
