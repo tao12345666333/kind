@@ -88,6 +88,8 @@ run_in_go_container() {
   docker exec  $(docker ps -ql) echo $GOPATH
   docker exec  $(docker ps -ql) ls .
   docker exec  $(docker ps -ql) ls /src
+  echo ${SOURCE_DIR}
+  ls -al
   docker exec  $(docker ps -ql) "$@"
 }
 
