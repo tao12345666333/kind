@@ -71,6 +71,8 @@ detect_and_set_goos_goarch() {
 
 # run $@ in a golang container with caching etc.
 run_in_go_container() {
+  echo "SOURCE_DIR" ${SOURCE_DIR}
+  echo "SOURCE_DIR 2" $SOURCE_DIR
   docker run \
     `# docker options: remove container on exit, run as the host user / group` \
       -d --rm --user "$(id -u):$(id -g)" \
