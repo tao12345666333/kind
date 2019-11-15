@@ -73,6 +73,7 @@ detect_and_set_goos_goarch() {
 run_in_go_container() {
   echo "SOURCE_DIR" ${SOURCE_DIR}
   echo "SOURCE_DIR 2" $SOURCE_DIR
+  env
   docker run \
     `# docker options: remove container on exit, run as the host user / group` \
       -d --rm --user "$(id -u):$(id -g)" \
