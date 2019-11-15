@@ -26,7 +26,7 @@ REPO_ROOT="${REPO_ROOT:-$(cd "$(dirname "$0")/.." && pwd)}"
 # output directory, will be mounted to /out, defaults to /bin in REPO_ROOT
 OUT_DIR="${OUT_DIR:-${REPO_ROOT}/bin}"
 # source directory, will be mounted to /src, defaults to current directory
-export SOURCE_DIR="${SOURCE_DIR:-$(pwd -P)}"
+SOURCE_DIR="${SOURCE_DIR:-/go/src/sigs.k8s.io/kind}"
 # default to disabling CGO for easier reproducible builds and cross compilation
 export CGO_ENABLED="${CGO_ENABLED:-0}"
 # the container image, by default a recent official golang image
