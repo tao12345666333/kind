@@ -89,4 +89,9 @@ run_in_go_container() {
 mkdir -p "${OUT_DIR}"
 docker volume create "${CACHE_VOLUME}" >/dev/null
 detect_and_set_goos_goarch
+
+echo ${SOURCE_DIR}
+ls ${SOURCE_DIR}
+
+
 run_in_go_container "$@"
