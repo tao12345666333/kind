@@ -73,7 +73,7 @@ detect_and_set_goos_goarch() {
 run_in_go_container() {
   docker run \
     `# docker options: remove container on exit, run as the host user / group` \
-      --rm --user "$(id -u):$(id -g)" \
+      -d --rm --user "$(id -u):$(id -g)" \
     `# golang caching: mount and use the cache volume` \
       -v "${CACHE_VOLUME}:/go" -e XDG_CACHE_HOME=/go/cache \
     `# mount the output & source dir, set working directory to the source dir` \
@@ -83,7 +83,12 @@ run_in_go_container() {
     `# pass through proxy settings` \
       -e HTTP_PROXY -e HTTPS_PROXY -e NO_PROXY \
     `# run the image with the args passed to this script` \
-      "${GOIMAGE}" "$@"
+      "${GOIMAGE}" "sleep 9999"
+
+  docker exec  $(docker ps -ql) echo $GOPATH
+  docker exec  $(docker ps -ql) ls .
+  docker exec  $(docker ps -ql) ls /src
+  docker exec  $(docker ps -ql) "$@"
 }
 
 mkdir -p "${OUT_DIR}"
