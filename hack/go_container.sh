@@ -83,7 +83,7 @@ run_in_go_container() {
     `# pass through proxy settings` \
       -e HTTP_PROXY -e HTTPS_PROXY -e NO_PROXY \
     `# run the image with the args passed to this script` \
-      "${GOIMAGE}" "sleep 9999"
+      "${GOIMAGE}" sleep 9999
 
   docker exec  $(docker ps -ql) echo $GOPATH
   docker exec  $(docker ps -ql) ls .
