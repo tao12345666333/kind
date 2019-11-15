@@ -88,11 +88,11 @@ run_in_go_container() {
     `# run the image with the args passed to this script` \
       "${GOIMAGE}" sleep 9999
 
+  echo "in go container run SOURCE_DIR" ${SOURCE_DIR}
+  ls -al ${SOURCE_DIR}
   docker exec  $(docker ps -ql) echo 'exec gopath' $GOPATH
   docker exec  $(docker ps -ql) ls .
   docker exec  $(docker ps -ql) ls /src
-  echo "in go container run SOURCE_DIR" ${SOURCE_DIR}
-  ls -al ${SOURCE_DIR}
   docker exec  $(docker ps -ql) "$@"
 }
 
