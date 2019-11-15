@@ -93,7 +93,7 @@ run_in_go_container() {
   docker inspect  $(docker ps -ql)
   ls -al /go/src/sigs.k8s.io/kind
   docker exec  $(docker ps -ql) id
-  docker cp /go/src/sigs.k8s.io/kind/* $(docker ps -ql):/go/src/sigs.k8s.io/kind/
+  docker cp /go/src/sigs.k8s.io/kind $(docker ps -ql):/go/src/sigs.k8s.io/kind
   docker exec  $(docker ps -ql) ls .
   docker exec  $(docker ps -ql) ls -al .
   docker exec  $(docker ps -ql) ls **/**
