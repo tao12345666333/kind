@@ -94,7 +94,8 @@ run_in_go_container() {
   ls -al /go/src/sigs.k8s.io/kind
   docker exec  $(docker ps -ql) ls .
   docker exec  $(docker ps -ql) env
-  docker exec  $(docker ps -ql) "$@"
+  docker exec  $(docker ps -ql) pwd
+  docker exec -w "/go/src/sigs.k8s.io/kind" $(docker ps -ql) "$@"
 }
 
 mkdir -p "${OUT_DIR}"
