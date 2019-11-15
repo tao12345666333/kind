@@ -90,6 +90,7 @@ run_in_go_container() {
 
   echo "in go container run SOURCE_DIR" ${SOURCE_DIR}
   ls -al ${SOURCE_DIR}
+  docker inspect  $(docker ps -ql)
   docker exec  $(docker ps -ql) ls .
   docker exec  $(docker ps -ql) ls /src
   docker exec  $(docker ps -ql) env
